@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>番剧 PK 大乱斗</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1 class="title">番剧 PK 大乱斗</h1>
+    <p class="subtitle">在你的追番列表里，举办一场单淘汰锦标赛</p>
+  </header>
+
+  <main>
+    <!-- 阶段 1：输入 UID -->
+    <section id="stage-input" class="stage active">
+      <div class="card input-card">
+        <div class="step-badge">STEP 1</div>
+        <h2 class="card-title">输入 B 站 UID</h2>
+        <input
+          id="uid-input"
+          type="text"
+          placeholder="请输入您的 B 站 UID"
+          autocomplete="off"
+        />
+        <p class="tip-text">
+          💡 在 B 站个人空间地址 <code>space.bilibili.com/<b>这串数字</b></code> 即为 UID。<br/>
+          ⚠️ 需要该用户已开启「公开追番」隐私设置。
+        </p>
+        <button id="btn-fetch" class="primary-btn">开始抓取</button>
+        <p id="hint-input" class="hint"></p>
+      </div>
+    </section>
+
+    <!-- 阶段 2：选择 PK 数量 -->
+    <section id="stage-mode" class="stage">
+      <div class="card mode-card">
+        <div class="step-badge">STEP 2</div>
+        <h2 class="card-title">选择 PK 规模</h2>
+        <p class="mode-summary">
+          共抓取到 <span class="big-num" id="total-count">0</span> 部番剧
+        </p>
+        <div id="mode-buttons" class="mode-buttons"></div>
+      </div>
+    </section>
+
+    <!-- 阶段 3：PK 对战 -->
+    <section id="stage-pk" class="stage">
+      <div class="pk-header">
+        <div class="round-badge" id="pk-progress">第 1 场</div>
+        <p class="pk-tip">点击你更喜欢的一方</p>
+      </div>
+
+      <div class="pk-arena">
+        <div class="pk-card pk-card-left" id="card-left" data-side="left">
+          <div class="card-frame">
+            <img src="" alt="" referrerpolicy="no-referrer" />
+          </div>
+          <div class="card-name"></div>
+        </div>
+
+        <div class="vs-wrap">
+          <div class="vs-text">VS</div>
+        </div>
+
+        <div class="pk-card pk-card-right" id="card-right" data-side="right">
+          <div class="card-frame">
+            <img src="" alt="" referrerpolicy="no-referrer" />
+          </div>
+          <div class="card-name"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 阶段 4：结果 -->
+    <section id="stage-result" class="stage">
+      <div class="result-wrap">
+        <div class="crown">🏆</div>
+        <h2 class="result-title">最终冠军</h2>
+        <div class="winner-card" id="winner-card">
+          <div class="winner-frame">
+            <img src="" alt="" referrerpolicy="no-referrer" />
+          </div>
+          <div class="winner-name"></div>
+        </div>
+        <button id="btn-restart" class="primary-btn restart-btn">再来一次</button>
+      </div>
+      <canvas id="confetti"></canvas>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Made with ❤ · Powered by Bilibili Open API
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
